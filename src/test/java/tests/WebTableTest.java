@@ -1,14 +1,18 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
 
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WebTableTest {
 
@@ -72,15 +76,15 @@ public class WebTableTest {
 
         List<WebElement> newTableRows = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         int expectedTableSize = tableSize + 1;
-        Assert.assertEquals(newTableRows.size(), expectedTableSize);
+        assertEquals(expectedTableSize, newTableRows.size());
 
         String actualTableValue = newTableRows.get(3).getText();
-        Assert.assertTrue(actualTableValue.contains(lastNameValue));
-        Assert.assertTrue(actualTableValue.contains(emailValue));
-        Assert.assertTrue(actualTableValue.contains(ageValue));
-        Assert.assertTrue(actualTableValue.contains(salaryValue));
-        Assert.assertTrue(actualTableValue.contains(departmentValue));
-        Assert.assertTrue(actualTableValue.contains(firstNameValue));
+        assertTrue(actualTableValue.contains(emailValue));
+        assertTrue(actualTableValue.contains(ageValue));
+        assertTrue(actualTableValue.contains(salaryValue));
+        assertTrue(actualTableValue.contains(departmentValue));
+        assertTrue(actualTableValue.contains(firstNameValue));
+        assertTrue(actualTableValue.contains(lastNameValue));
 
     }
 }

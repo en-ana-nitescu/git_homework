@@ -1,14 +1,16 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class SortableTest {
 
@@ -34,7 +36,8 @@ public class SortableTest {
             WebElement nextElement = list.get(i++);
             System.out.println("Element number is " + currentElement.getText());
 
-            Thread.sleep(1000);
+            //Thread.sleep(1000);
+            TimeUnit.SECONDS.sleep(1);
             actions.clickAndHold(currentElement)
                     .moveToElement(nextElement)
                     .release()

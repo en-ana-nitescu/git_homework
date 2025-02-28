@@ -1,8 +1,9 @@
 package tests;
 
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.Test;
+//import org.testng.annotations.Test;
 
 import java.io.File;
 
