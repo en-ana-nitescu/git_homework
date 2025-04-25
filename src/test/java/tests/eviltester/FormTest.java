@@ -1,11 +1,11 @@
-package tests;
+package tests.eviltester;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pages.FormPage;
+import pages.eviltester.FormPage;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

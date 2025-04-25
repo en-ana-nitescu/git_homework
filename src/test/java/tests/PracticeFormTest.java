@@ -1,85 +1,93 @@
 package tests;
 
+import helper_methods.ElementMethods;
+import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-//import org.testng.annotations.Test;
 
-import java.io.File;
+import java.util.List;
+
 
 public class PracticeFormTest {
 
     public WebDriver driver;
+    public ElementMethods elementMethods;
+    public JSMethods jsMethods;
 
     @Test
     public void automationMethod() {
 
         driver = new ChromeDriver();
+        elementMethods = new ElementMethods(driver);
+        jsMethods = new JSMethods(driver);
 
         driver.get("https://demoqa.com/");
 
         driver.manage().window().maximize();
 
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)");
+        jsMethods.scrollDown(400);
 
-        WebElement formsField = driver.findElement(By.xpath("//h5[text()='Forms']"));
-        formsField.click();
+      /*  WebElement formsField = driver.findElement(By.xpath("//h5[text()='Forms']"));
+        elementMethods.clickElement(formsField);
 
         WebElement practiceFormField = driver.findElement(By.xpath("//span[text()='Practice Form']"));
-        practiceFormField.click();
+        elementMethods.clickElement(practiceFormField);*/
+
+        List<WebElement> menuItems = driver.findElements(By.xpath("//h5"));
+        elementMethods.selectElementByText(menuItems,"Forms");
+        List<WebElement> subMenuItems = driver.findElements(By.xpath("//span[@class='text']"));
+        elementMethods.selectElementByText(subMenuItems,"Practice Form");
 
         WebElement firstNameField = driver.findElement(By.id("firstName"));
         String firstNameValue = "Jane";
-        firstNameField.sendKeys(firstNameValue);
+        elementMethods.fillElement(firstNameField, firstNameValue);
 
         WebElement lastNameField = driver.findElement(By.id("lastName"));
         String lastNameValue = "Doe";
-        lastNameField.sendKeys(lastNameValue);
+        elementMethods.fillElement(lastNameField, lastNameValue);
 
         WebElement emailField = driver.findElement(By.id("userEmail"));
         String emailValue = "test@test.com";
-        emailField.sendKeys(emailValue);
+        elementMethods.fillElement(emailField, emailValue);
 
         WebElement mobileField = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
         String mobileValue = "1234567890";
-        mobileField.sendKeys(mobileValue);
+        elementMethods.fillElement(mobileField, mobileValue);
 
         WebElement uploadFileField = driver.findElement(By.id("uploadPicture"));
-        File file = new File("src/test/resources/bp1.jpg");
-        uploadFileField.sendKeys(file.getAbsolutePath());
+        elementMethods.uploadPicture(uploadFileField);
 
-        WebElement maleGenderField = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
+       /* WebElement maleGenderField = driver.findElement(By.xpath("//label[@for='gender-radio-1']"));
         WebElement femaleGenderField = driver.findElement(By.xpath("//label[@for='gender-radio-2']"));
         WebElement otherGenderField = driver.findElement(By.xpath("//label[@for='gender-radio-3']"));
+        List<WebElement> genderFields = new ArrayList<>();
+        genderFields.add(maleGenderField);
+        genderFields.add(femaleGenderField);
+        genderFields.add(otherGenderField);*/
 
+        List<WebElement> genderFields = driver.findElements(By.xpath("//label[starts-with(@for,'gender-radio')]"));
         String genderValue = "Female";
-
-        if (maleGenderField.getText().equals(genderValue))
-            maleGenderField.click();
-        else if (femaleGenderField.getText().equals(genderValue))
-            femaleGenderField.click();
-        else otherGenderField.click();
-
+        elementMethods.selectElementByText(genderFields, genderValue);
 
         WebElement subjectsField = driver.findElement(By.id("subjectsInput"));
         String subjectsValue = "Social Studies";
-        subjectsField.sendKeys(subjectsValue);
-        subjectsField.sendKeys(Keys.ENTER);
+        elementMethods.fillElementAndEnter(subjectsField, subjectsValue);
 
         WebElement stateField = driver.findElement(By.id("react-select-3-input"));
         //stateField.click();
-        js.executeScript("arguments[0].click();", stateField);
-        stateField.sendKeys("NCR");
-        stateField.sendKeys(Keys.ENTER);
+        jsMethods.forceClick(stateField);
+        elementMethods.fillElementAndEnter(stateField, "NCR");
 
         WebElement cityField = driver.findElement(By.id("react-select-4-input"));
-        js.executeScript("arguments[0].click();", cityField);
-        cityField.sendKeys("Delhi");
-        cityField.sendKeys(Keys.ENTER);
+        jsMethods.forceClick(cityField);
+        elementMethods.fillElementAndEnter(cityField, "Delhi");
 
         WebElement submitButton = driver.findElement(By.id("submit"));
-        js.executeScript("arguments[0].click();", submitButton);
+        jsMethods.forceClick(submitButton);
 
     }
 }
