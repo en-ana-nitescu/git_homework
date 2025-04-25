@@ -77,6 +77,18 @@ public class PracticeFormPage {
     @FindBy(id = "submit")
     WebElement submitButton;
 
+    public WebElement getCityField() {
+        return cityField;
+    }
+
+    public WebElement getStateField() {
+        return stateField;
+    }
+
+    public WebElement getSubmitButton() {
+        return submitButton;
+    }
+
     public void completeFirstRegion(String firstName, String lastName, String email, String address, String mobileNo) {
         elementMethods.fillElementAndEnter(firstNameField, firstName);
         elementMethods.fillElementAndEnter(lastNameField, lastName);

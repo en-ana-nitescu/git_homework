@@ -1,4 +1,4 @@
-package tests;
+package tests.old;
 
 import helper_methods.ElementMethods;
 import helper_methods.JSMethods;

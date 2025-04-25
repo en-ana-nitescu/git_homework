@@ -33,32 +33,15 @@ public class PracticeFormTest {
 
         homePage.goToHomePage();
 
-        homePage.goToMenu(homePage.getMenuItems(),"Forms");
-        homePage.goToMenu(homePage.getSubMenuItems(),"Practice Form");
+        homePage.goToMenu(homePage.getMenuItems(), "Forms");
+        homePage.goToMenu(homePage.getSubMenuItems(), "Practice Form");
 
-        //WebElement firstNameField = driver.findElement(By.id("firstName"));
         String firstNameValue = "Jane";
-        //elementMethods.fillElement(firstNameField, firstNameValue);
-
-        //WebElement lastNameField = driver.findElement(By.id("lastName"));
         String lastNameValue = "Doe";
-        //elementMethods.fillElement(lastNameField, lastNameValue);
-
-        //WebElement emailField = driver.findElement(By.id("userEmail"));
         String emailValue = "test@test.com";
-        //elementMethods.fillElement(emailField, emailValue);
-
-        //WebElement mobileField = driver.findElement(By.cssSelector("input[placeholder='Mobile Number']"));
         String mobileValue = "1234567890";
-        //elementMethods.fillElement(mobileField, mobileValue);
-
-        //List<WebElement> genderFields = driver.findElements(By.xpath("//label[starts-with(@for,'gender-radio')]"));
         String genderValue = "Female";
-        //elementMethods.selectElementByText(genderFields, genderValue);
-
-        //WebElement subjectsField = driver.findElement(By.id("subjectsInput"));
         String subjectsValue = "Social Studies";
-        //elementMethods.fillElementAndEnter(subjectsField, subjectsValue);
 
         List<String> subjectsList = new ArrayList<String>();
         subjectsList.add("Maths");
@@ -78,17 +61,13 @@ public class PracticeFormTest {
         WebElement uploadFileField = driver.findElement(By.id("uploadPicture"));
         elementMethods.uploadPicture(uploadFileField);
 
-        WebElement stateField = driver.findElement(By.id("react-select-3-input"));
-        //stateField.click();
-        jsMethods.forceClick(stateField);
-        elementMethods.fillElementAndEnter(stateField, "NCR");
+        jsMethods.forceClick(practiceFormPage.getStateField());
+        elementMethods.fillElementAndEnter(practiceFormPage.getStateField(), "NCR");
 
-        WebElement cityField = driver.findElement(By.id("react-select-4-input"));
-        jsMethods.forceClick(cityField);
-        elementMethods.fillElementAndEnter(cityField, "Delhi");
+        jsMethods.forceClick(practiceFormPage.getCityField());
+        elementMethods.fillElementAndEnter(practiceFormPage.getCityField(), "Delhi");
 
-        WebElement submitButton = driver.findElement(By.id("submit"));
-        jsMethods.forceClick(submitButton);
+        jsMethods.forceClick(practiceFormPage.getSubmitButton());
 
     }
 }

@@ -1,76 +1,77 @@
-package tests;
+package tests.old;
 
+import helper_methods.ElementMethods;
+import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WebTableTestOld {
+public class WebTableTest {
 
     public WebDriver driver;
+    ElementMethods elementMethods;
+    JSMethods jsMethods;
 
     @Test
     public void automationMethod() {
 
         //open Chrome browser
         driver = new ChromeDriver();
+        elementMethods = new ElementMethods(driver);
+        jsMethods = new JSMethods(driver);
 
-        //access web page
         driver.get("https://demoqa.com/");
 
-        //maximize browser
         driver.manage().window().maximize();
 
-        //page scroll
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,400)");
+        jsMethods.scrollDown(400);
 
-        //declare element
-        WebElement elementsField = driver.findElement(By.xpath("//h5[text()='Elements']"));
-        elementsField.click();
-
-        WebElement webTablesField = driver.findElement(By.xpath("//span[text()='Web Tables']"));
-        webTablesField.click();
+        List<WebElement> menuItems = driver.findElements(By.xpath("//h5"));
+        elementMethods.selectElementByText(menuItems, "Elements");
+        List<WebElement> subMenuItems = driver.findElements(By.xpath("//span[@class='text']"));
+        elementMethods.selectElementByText(subMenuItems, "Web Tables");
 
         List<WebElement> tableRows = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         int tableSize = tableRows.size();
 
         WebElement addField = driver.findElement(By.id("addNewRecordButton"));
-        addField.click();
+        elementMethods.clickElement(addField);
 
         WebElement firstNameField = driver.findElement(By.id("firstName"));
         String firstNameValue = "Jane";
-        firstNameField.sendKeys(firstNameValue);
+        elementMethods.fillElement(firstNameField, firstNameValue);
 
         WebElement lastNameField = driver.findElement(By.id("lastName"));
         String lastNameValue = "Doe";
-        lastNameField.sendKeys(lastNameValue);
+        elementMethods.fillElement(lastNameField, lastNameValue);
 
         WebElement emailField = driver.findElement(By.id("userEmail"));
         String emailValue = "test@test.com";
-        emailField.sendKeys(emailValue);
+        elementMethods.fillElement(emailField, emailValue);
 
         WebElement ageField = driver.findElement(By.id("age"));
         String ageValue = "25";
-        ageField.sendKeys(ageValue);
+        elementMethods.fillElementAndEnter(ageField, ageValue);
 
         WebElement salaryField = driver.findElement(By.id("salary"));
         String salaryValue = "1000";
-        salaryField.sendKeys(salaryValue);
+        elementMethods.fillElementAndEnter(salaryField, salaryValue);
 
         WebElement departmentField = driver.findElement(By.id("department"));
         String departmentValue = "QA";
-        departmentField.sendKeys(departmentValue);
+        elementMethods.fillElementAndEnter(departmentField, departmentValue);
 
         WebElement submitField = driver.findElement(By.id("submit"));
-        submitField.click();
+        elementMethods.clickElement(submitField);
 
         List<WebElement> newTableRows = driver.findElements(By.xpath("//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']"));
         int expectedTableSize = tableSize + 1;

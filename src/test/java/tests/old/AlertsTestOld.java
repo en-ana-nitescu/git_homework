@@ -1,4 +1,4 @@
-package tests;
+package tests.old;
 
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.*;
