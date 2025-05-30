@@ -1,48 +1,33 @@
 package tests.demoqa;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.demoqa.FramesPage;
 import pages.demoqa.HomePage;
-
-import java.util.List;
+import shared.SharedData;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FramesTest {
+public class FramesTest extends SharedData {
 
-    public WebDriver driver;
-    public JSMethods jsMethods;
-    public ElementMethods elementMethods;
     HomePage homePage;
+    FramesPage framesPage;
 
     @Test
     public void automationMethod() {
-        driver = new ChromeDriver();
-        jsMethods = new JSMethods(driver);
-        elementMethods = new ElementMethods(driver);
-        homePage = new HomePage(driver);
-
-        homePage.goToHomePage();
+        homePage = new HomePage(getDriver());
+        framesPage = new FramesPage(getDriver());
 
         homePage.goToMenu(homePage.getMenuItems(), "Alerts, Frame & Windows");
         homePage.goToMenu(homePage.getSubMenuItems(), "Frames");
 
-        WebElement firstFrameElement = driver.findElement(By.id("frame1"));
-        driver.switchTo().frame(firstFrameElement);
+        getDriver().switchTo().frame(framesPage.getFirstFrameElement());
 
-        WebElement sampleHeadingFrameElement = driver.findElement(By.id("sampleHeading"));
-        assertEquals("This is a sample page", sampleHeadingFrameElement.getText());
+        assertEquals("This is a sample page", framesPage.getSampleHeading().getText());
 
-        driver.switchTo().defaultContent();
+        getDriver().switchTo().defaultContent();
 
-        WebElement secondFrameElement = driver.findElement(By.id("frame2"));
-        driver.switchTo().frame(secondFrameElement);
+        getDriver().switchTo().frame(framesPage.getSecondFrameElement());
 
-        jsMethods.scroll(100, 100);
+        framesPage.scrollBy(100, 100);
     }
 }

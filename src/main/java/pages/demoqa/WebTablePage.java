@@ -1,84 +1,67 @@
 package pages.demoqa;
 
-import helper_methods.ElementMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.devtools.v85.page.Page;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class WebTablePage {
-    WebDriver driver;
-    ElementMethods elementMethods;
-
-    public WebTablePage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        PageFactory.initElements(driver, this);
-    }
+public class WebTablePage extends CommonPage {
 
     @FindBy(id = "addNewRecordButton")
-    WebElement addField;
+    private WebElement addField;
 
     @FindBy(id = "firstName")
-    WebElement firstNameField;
+    private WebElement firstNameField;
 
     @FindBy(id = "lastName")
-    WebElement lastNameField;
+    private WebElement lastNameField;
 
     @FindBy(id = "userEmail")
-    WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(id = "age")
-    WebElement ageField;
+    private WebElement ageField;
 
     @FindBy(id = "salary")
-    WebElement salaryField;
+    private WebElement salaryField;
 
     @FindBy(id = "department")
-    WebElement departmentField;
+    private WebElement departmentField;
 
     @FindBy(id = "submit")
-    WebElement submitField;
+    private WebElement submitField;
 
     @FindBy(xpath = "//div[@class='rt-tbody']/div/div[@class='rt-tr -odd' or @class='rt-tr -even']")
-    List<WebElement> tableRows;
+    private List<WebElement> tableRows;
 
-    public WebElement getAddField() {
-        return addField;
+    public WebTablePage(WebDriver driver) {
+        super(driver);
     }
 
-    public WebElement getFirstNameField() {
-        return firstNameField;
+    public void addNewRecord() {
+        elementMethods.clickElement(addField);
     }
 
-    public WebElement getLastNameField() {
-        return lastNameField;
+    public void completeDetails(String firstNameValue, String lastNameValue, String emailValue, String ageValue, String salaryValue, String departmentValue) {
+        elementMethods.fillElement(firstNameField, firstNameValue);
+        elementMethods.fillElement(lastNameField, lastNameValue);
+        elementMethods.fillElement(emailField, emailValue);
+        elementMethods.fillElement(ageField, ageValue);
+        elementMethods.fillElement(salaryField, salaryValue);
+        elementMethods.fillElement(departmentField, departmentValue);
     }
 
-    public WebElement getEmailField() {
-        return emailField;
+    public void clickSubmit() {
+        elementMethods.clickElement(submitField);
     }
 
-    public WebElement getAgeField() {
-        return ageField;
+
+    public int getTableSize() {
+        return tableRows.size();
     }
 
-    public WebElement getSalaryField() {
-        return salaryField;
-    }
-
-    public WebElement getDepartmentField() {
-        return departmentField;
-    }
-
-    public WebElement getSubmitField() {
-        return submitField;
-    }
-
-    public List<WebElement> getTableRows() {
-        return tableRows;
+    public String getTableRowText(int index) {
+        return tableRows.get(index).getText();
     }
 }

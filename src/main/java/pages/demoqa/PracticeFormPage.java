@@ -1,92 +1,73 @@
 package pages.demoqa;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PracticeFormPage {
-
-    WebDriver driver;
-    ElementMethods elementMethods;
-    JSMethods jsMethods;
-
-    public PracticeFormPage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        this.jsMethods = new JSMethods(driver);
-        PageFactory.initElements(driver, this);
-    }
+public class PracticeFormPage extends CommonPage {
 
     @FindBy(id = "firstName")
-    WebElement firstNameField;
+    private WebElement firstNameField;
 
     @FindBy(id = "lastName")
-    WebElement lastNameField;
+    private WebElement lastNameField;
 
     @FindBy(id = "userEmail")
-    WebElement emailField;
+    private WebElement emailField;
 
     @FindBy(css = "input[placeholder='Mobile Number']")
-    WebElement mobileField;
+    private WebElement mobileField;
 
     @FindBy(id = "uploadPicture")
-    WebElement uploadFileField;
+    private WebElement uploadFileField;
 
     @FindBy(xpath = "//label[starts-with(@for,'gender-radio')]")
-    WebElement genderFields;
+    private WebElement genderFields;
 
     @FindBy(xpath = "//label[@for='gender-radio-1']")
-    WebElement maleGenderField;
+    private WebElement maleGenderField;
 
     @FindBy(xpath = "//label[@for='gender-radio-2']")
-    WebElement femaleGenderField;
+    private WebElement femaleGenderField;
 
     @FindBy(xpath = "//label[@for='gender-radio-3']")
-    WebElement otherGenderField;
+    private WebElement otherGenderField;
 
     @FindBy(id = "subjectsInput")
-    WebElement subjectsField;
+    private WebElement subjectsField;
 
     @FindBy(xpath = "//div[@id='subjectsContainer']")
-    WebElement subjectsContainer;
+    private WebElement subjectsContainer;
 
     @FindBy(id = "currentAddress")
-    WebElement currentAddressField;
+    private WebElement currentAddressField;
 
     @FindBy(id = "react-select-3-input")
-    WebElement stateField;
+    private WebElement stateField;
 
     @FindBy(id = "react-select-4-input")
-    WebElement cityField;
+    private WebElement cityField;
 
     @FindBy(xpath = "//label[@for='hobbies-checkbox-1']")
-    WebElement sportHobbyField;
+    private WebElement sportHobbyField;
 
     @FindBy(xpath = "//label[@for='hobbies-checkbox-2']")
-    WebElement readingHobbyField;
+    private WebElement readingHobbyField;
 
     @FindBy(xpath = "//label[@for='hobbies-checkbox-3']")
-    WebElement musicHobbyField;
+    private WebElement musicHobbyField;
+
+    @FindBy(id = "uploadPicture")
+    private WebElement uploadPicture;
 
     @FindBy(id = "submit")
-    WebElement submitButton;
+    private WebElement submitButton;
 
-    public WebElement getCityField() {
-        return cityField;
-    }
-
-    public WebElement getStateField() {
-        return stateField;
-    }
-
-    public WebElement getSubmitButton() {
-        return submitButton;
+    public PracticeFormPage(WebDriver driver) {
+        super(driver);
     }
 
     public void completeFirstRegion(String firstName, String lastName, String email, String address, String mobileNo) {
@@ -127,6 +108,24 @@ public class PracticeFormPage {
         hobbiesElement.add(sportHobbyField);
         hobbiesElement.add(readingHobbyField);
         hobbiesElement.add(musicHobbyField);
-        elementMethods.clickMultipleValues(hobbiesElement,hobbiesList);
+        elementMethods.clickMultipleValues(hobbiesElement, hobbiesList);
+    }
+
+    public void uploadPicture() {
+        elementMethods.uploadPicture(uploadPicture);
+    }
+
+    public void completeStateCity(String state, String city){
+        jsMethods.forceClick(stateField);
+        elementMethods.waitForElementVisible(stateField);
+        elementMethods.fillElementAndEnter(stateField, state);
+
+        jsMethods.forceClick(cityField);
+        elementMethods.waitForElementVisible(cityField);
+        elementMethods.fillElementAndEnter(cityField, city);
+    }
+
+    public void clickSubmitButton() {
+        jsMethods.forceClick(submitButton);
     }
 }

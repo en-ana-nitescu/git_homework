@@ -1,37 +1,23 @@
 package tests.demoqa;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.demoqa.HomePage;
 import pages.demoqa.PracticeFormPage;
+import shared.SharedData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class PracticeFormTest {
+public class PracticeFormTest extends SharedData {
 
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public JSMethods jsMethods;
     HomePage homePage;
     PracticeFormPage practiceFormPage;
 
     @Test
     public void automationMethod() {
-
-        driver = new ChromeDriver();
-        elementMethods = new ElementMethods(driver);
-        jsMethods = new JSMethods(driver);
-        homePage = new HomePage(driver);
-        practiceFormPage = new PracticeFormPage(driver);
-
-        homePage.goToHomePage();
+        homePage = new HomePage(getDriver());
+        practiceFormPage = new PracticeFormPage(getDriver());
 
         homePage.goToMenu(homePage.getMenuItems(), "Forms");
         homePage.goToMenu(homePage.getSubMenuItems(), "Practice Form");
@@ -58,16 +44,8 @@ public class PracticeFormTest {
         hobbiesList.add("Reading");
         practiceFormPage.completeHobbies(hobbiesList);
 
-        WebElement uploadFileField = driver.findElement(By.id("uploadPicture"));
-        elementMethods.uploadPicture(uploadFileField);
-
-        jsMethods.forceClick(practiceFormPage.getStateField());
-        elementMethods.fillElementAndEnter(practiceFormPage.getStateField(), "NCR");
-
-        jsMethods.forceClick(practiceFormPage.getCityField());
-        elementMethods.fillElementAndEnter(practiceFormPage.getCityField(), "Delhi");
-
-        jsMethods.forceClick(practiceFormPage.getSubmitButton());
-
+        practiceFormPage.uploadPicture();
+        practiceFormPage.completeStateCity("NCR", "Delhi");
+        practiceFormPage.clickSubmitButton();
     }
 }

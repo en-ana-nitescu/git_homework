@@ -1,83 +1,49 @@
 package tests.demoqa;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.demoqa.HomePage;
 import pages.demoqa.WebTablePage;
-
-import java.time.Duration;
-import java.util.List;
+import shared.SharedData;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class WebTableTest {
+public class WebTableTest extends SharedData {
 
-    public WebDriver driver;
-    ElementMethods elementMethods;
-    JSMethods jsMethods;
     HomePage homePage;
     WebTablePage webTablePage;
 
     @Test
     public void automationMethod() throws InterruptedException {
-
-        //open Chrome browser
-        driver = new ChromeDriver();
-        elementMethods = new ElementMethods(driver);
-        jsMethods = new JSMethods(driver);
-        homePage = new HomePage(driver);
-        webTablePage = new WebTablePage(driver);
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        homePage.goToHomePage();
+        homePage = new HomePage(getDriver());
+        webTablePage = new WebTablePage(getDriver());
 
         homePage.goToMenu(homePage.getMenuItems(), "Elements");
         homePage.goToMenu(homePage.getSubMenuItems(), "Web Tables");
 
-        int tableSize = webTablePage.getTableRows().size();
+        int initialSize = webTablePage.getTableSize();
 
-        elementMethods.clickElement(webTablePage.getAddField());
+        webTablePage.addNewRecord();
 
         String firstNameValue = "Jane";
-        elementMethods.fillElement(webTablePage.getFirstNameField(), firstNameValue);
-
         String lastNameValue = "Doe";
-        elementMethods.fillElement(webTablePage.getLastNameField(), lastNameValue);
-
         String emailValue = "test@test.com";
-        elementMethods.fillElement(webTablePage.getEmailField(), emailValue);
-
         String ageValue = "25";
-        elementMethods.fillElement(webTablePage.getAgeField(), ageValue);
-
         String salaryValue = "1000";
-        elementMethods.fillElement(webTablePage.getSalaryField(), salaryValue);
-        Thread.sleep(Duration.ofSeconds(2));
-
         String departmentValue = "QA";
-        elementMethods.fillElement(webTablePage.getDepartmentField(), departmentValue);
+        webTablePage.completeDetails(firstNameValue, lastNameValue, emailValue, ageValue, salaryValue, departmentValue);
 
-        elementMethods.clickElement(webTablePage.getSubmitField());
+        webTablePage.clickSubmit();
 
-        int expectedTableSize = tableSize + 1;
+        int newSize = webTablePage.getTableSize();
+        assertEquals(initialSize + 1, newSize);
 
-        List<WebElement> newTableRows = webTablePage.getTableRows();
-        assertEquals(expectedTableSize, newTableRows.size());
-
-        String actualTableValue = newTableRows.get(3).getText();
+        String actualTableValue = webTablePage.getTableRowText(3);
         assertTrue(actualTableValue.contains(emailValue));
         assertTrue(actualTableValue.contains(ageValue));
         assertTrue(actualTableValue.contains(salaryValue));
         assertTrue(actualTableValue.contains(departmentValue));
         assertTrue(actualTableValue.contains(firstNameValue));
         assertTrue(actualTableValue.contains(lastNameValue));
-
     }
 }

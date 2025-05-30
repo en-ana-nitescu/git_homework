@@ -1,7 +1,9 @@
 package pages.demoqa;
 
+import helper_methods.AlertMethods;
 import helper_methods.ElementMethods;
 import helper_methods.JSMethods;
+import helper_methods.WindowMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -13,17 +15,22 @@ public class CommonPage {
 
     WebDriver driver;
     ElementMethods elementMethods;
-    public JSMethods jsMethods;
+    JSMethods jsMethods;
+    AlertMethods alertMethods;
+    WindowMethods windowMethods;
 
     public CommonPage(WebDriver driver) {
         this.driver = driver;
         this.elementMethods = new ElementMethods(driver);
         this.jsMethods = new JSMethods(driver);
+        this.alertMethods = new AlertMethods(driver);
+        this.windowMethods = new WindowMethods(driver);
+
         PageFactory.initElements(driver, this);
     }
 
     @FindBy(xpath = "//span[@class='text']")
-    List<WebElement> subMenuItems;
+    private List<WebElement> subMenuItems;
 
     public void goToMenu(String subMenuName) {
         jsMethods.scrollDown(400);

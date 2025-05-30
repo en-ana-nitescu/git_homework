@@ -17,4 +17,13 @@ public class WindowMethods {
         List<String> windows = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(windows.get(index));
     }
+
+    public void switchToOpenedTab() {
+        List<String> windows = new ArrayList<>(driver.getWindowHandles());
+        driver.switchTo().window(windows.get(1));
+    }
+
+    public void switchToMainTab() {
+        driver.switchTo().defaultContent();
+    }
 }

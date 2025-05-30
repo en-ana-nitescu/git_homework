@@ -108,4 +108,7 @@ public class ElementMethods {
     }
 
 
+    public String getElementText(WebElement element) {
+        return element.getText();
+    }
 }

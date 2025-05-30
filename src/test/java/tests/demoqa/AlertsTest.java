@@ -1,63 +1,34 @@
 package tests.demoqa;
 
-import helper_methods.AlertMethods;
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import pages.demoqa.AlertsPage;
 import pages.demoqa.HomePage;
-
-import java.time.Duration;
-import java.util.List;
+import shared.SharedData;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class AlertsTest {
-    public WebDriver driver;
-    ElementMethods elementMethods;
-    AlertMethods alertMethods;
-    JSMethods jsMethods;
+public class AlertsTest extends SharedData {
     HomePage homePage;
+    AlertsPage alertsPage;
 
     @Test
     public void automationMethod() {
-        driver = new ChromeDriver();
-        elementMethods = new ElementMethods(driver);
-        alertMethods = new AlertMethods(driver);
-        jsMethods = new JSMethods(driver);
-        homePage = new HomePage(driver);
+        homePage = new HomePage(getDriver());
+        alertsPage = new AlertsPage(getDriver());
 
-        homePage.goToHomePage();
+        homePage.goToMenu(homePage.getMenuItems(), "Alerts, Frame & Windows");
+        homePage.goToMenu(homePage.getSubMenuItems(), "Alerts");
 
-        //define implicit wait
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        alertsPage.clickAlertButton("OK");
 
-        homePage.goToMenu(homePage.getMenuItems(),"Alerts, Frame & Windows");
-        homePage.goToMenu(homePage.getSubMenuItems(),"Alerts");
+        alertsPage.clickTimerAlertButton("OK");
 
-        WebElement alertOkButton = driver.findElement(By.id("alertButton"));
-        elementMethods.clickElement(alertOkButton);
-        alertMethods.interactWithAlertOK("OK");
+        alertsPage.clickConfirmButton("Cancel");
+        assertEquals("You selected Cancel", alertsPage.getConfirmResult());
 
-        WebElement timerAlertButton = driver.findElement(By.id("timerAlertButton"));
-        elementMethods.clickElement(timerAlertButton);
-        alertMethods.interactWithAlertOK("OK");
-
-        WebElement confirmButton = driver.findElement(By.id("confirmButton"));
-        elementMethods.clickElement(confirmButton);
-        alertMethods.interactWithAlertOK("Cancel");
-        WebElement confirmResult = driver.findElement(By.id("confirmResult"));
-        assertEquals("You selected Cancel", confirmResult.getText());
-
-        WebElement promtButton = driver.findElement(By.id("promtButton"));
-        elementMethods.clickElement(promtButton);
         String alertText = "Jane";
-        alertMethods.interactWithAlertOK(alertText);
-        WebElement promptResult = driver.findElement(By.id("promptResult"));
-        assertEquals("You entered " + alertText, promptResult.getText());
+        alertsPage.clickPromptButton(alertText);
+        assertEquals("You entered " + alertText, alertsPage.getPromptResult());
 
     }
 }

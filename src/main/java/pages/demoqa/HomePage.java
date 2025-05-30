@@ -1,32 +1,26 @@
 package pages.demoqa;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage {
-
-    WebDriver driver;
-    ElementMethods elementMethods;
-    public JSMethods jsMethods;
-
-    public HomePage(WebDriver driver) {
-        this.driver = driver;
-        this.elementMethods = new ElementMethods(driver);
-        this.jsMethods = new JSMethods(driver);
-        PageFactory.initElements(driver, this);
-    }
+public class HomePage extends CommonPage {
 
     @FindBy(xpath = "//h5")
-    List<WebElement> menuItems;
+    private List<WebElement> menuItems;
 
     @FindBy(xpath = "//span[@class='text']")
-    List<WebElement> subMenuItems;
+    private List<WebElement> subMenuItems;
+
+    @FindBy(xpath = "//p[text()='Consent']")
+    private WebElement consentElement;
+
+    public HomePage(WebDriver driver) {
+        super(driver);
+    }
+
 
     public void goToHomePage() {
         driver.get("https://demoqa.com/");
@@ -42,7 +36,8 @@ public class HomePage {
     }
 
     public void goToMenu(List<WebElement> items, String menuName) {
+        //elementMethods.clickElement(consentElement);
         jsMethods.scrollDown(400);
-        elementMethods.selectElementByText(items,menuName);
+        elementMethods.selectElementByText(items, menuName);
     }
 }
