@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MyTestSuite" parallel="classes" >
+    <test name="ParallelTests">
+<!--        <classes>
+            <class name="tests.demoqa.AlertsTest"></class>
+            <class name="tests.demoqa.FramesTest"></class>
+        </classes>-->
+        <packages>
+            <package name="tests.demoqa.*"/>
+        </packages>
+    </test>
+</suite>

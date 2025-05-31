@@ -1,11 +1,12 @@
 package tests.demoqa;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.demoqa.BrowserWindowsPage;
 import pages.demoqa.HomePage;
 import shared.SharedData;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.testng.Assert.assertEquals;
+
 
 public class BrowserWindowsTest extends SharedData {
 

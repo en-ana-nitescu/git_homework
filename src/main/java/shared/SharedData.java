@@ -1,9 +1,11 @@
 package shared;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 
 import java.time.Duration;
 
@@ -11,7 +13,7 @@ public class SharedData {
 
     private WebDriver driver;
 
-    @BeforeEach
+    @BeforeMethod
     public void setUpBrowser() {
         driver = new ChromeDriver();
         driver.get("https://demoqa.com/");
@@ -20,7 +22,7 @@ public class SharedData {
 
     }
 
-    @AfterEach
+    @AfterMethod
     public void tearDownBrowser() {
         driver.quit();
     }

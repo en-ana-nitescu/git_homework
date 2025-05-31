@@ -20,16 +20,23 @@
             <artifactId>selenium-java</artifactId>
             <version>4.27.0</version>
         </dependency>
-        <!--<dependency>
+        <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.10.2</version>
-        </dependency>-->
-        <dependency>
+            <version>7.11.0</version>
+        </dependency>
+  <!--      <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.12.0</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-suite-api</artifactId>
+            <version>1.13.0</version>
+            <scope>test</scope>
+        </dependency>-->
 
     </dependencies>
 

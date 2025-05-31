@@ -1,12 +1,13 @@
 package tests.demoqa;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.demoqa.HomePage;
 import pages.demoqa.WebTablePage;
 import shared.SharedData;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+
 
 public class WebTableTest extends SharedData {
 

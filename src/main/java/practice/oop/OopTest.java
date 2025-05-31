@@ -1,6 +1,6 @@
 package practice.oop;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import practice.oop.abstraction.*;
 
 public class OopTest {

@@ -1,27 +1,28 @@
 package tests.eviltester;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 import pages.eviltester.FormPage;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.testng.Assert.assertTrue;
+
 
 public class FormTest {
 
     static WebDriver driver;
     FormPage formPage;
 
-    @BeforeAll
+    @BeforeClass
     public static void setUpClass() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://testpages.eviltester.com/styled/basic-html-form-test.html");
     }
 
-    @BeforeEach
+    @BeforeTest
     public void setUp(){
         formPage = new FormPage(driver);
     }

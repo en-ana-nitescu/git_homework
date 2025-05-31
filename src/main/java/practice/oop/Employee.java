@@ -1,6 +1,6 @@
 package practice.oop;
 
-public class Employee extends Person {
+public class Employee extends Person implements EmployeeInt{
     private String company;
     private int experience;
     private int vacationDays;
@@ -58,5 +58,27 @@ public class Employee extends Person {
 
     public void raise(String grade){
         System.out.println("Employee receives the new grade: " + grade);
+    }
+
+    @Override
+    public void shouldWork() {
+        System.out.println("Employee is working");
+    }
+
+    @Override
+    public void shouldHaveABreak() {
+        System.out.println("Employee is taking a break");
+
+    }
+
+    @Override
+    public void shouldReceiveASalary() {
+        System.out.println("Employee receives a salary");
+
+    }
+
+    @Override
+    public void canResign() {
+        System.out.println("Employee can resign");
     }
 }

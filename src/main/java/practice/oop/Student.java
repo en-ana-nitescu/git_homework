@@ -1,6 +1,6 @@
 package practice.oop;
 
-public class Student extends Person {
+public class Student extends Person implements StudentInt{
     private String university;
     private int year;
     private boolean hasScholarship;
@@ -49,4 +49,14 @@ public class Student extends Person {
     }
 
 
+    @Override
+    public void attendCourses() {
+        System.out.println("Student is attending courses");
+    }
+
+    @Override
+    public void takeExams() {
+        System.out.println("Student is taking exams");
+
+    }
 }

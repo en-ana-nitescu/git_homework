@@ -1,6 +1,6 @@
 package tests.demoqa;
 
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.Test;
 import pages.demoqa.HomePage;
 import pages.demoqa.PracticeFormPage;
 import shared.SharedData;
