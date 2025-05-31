@@ -43,5 +43,10 @@ public class Student extends Person {
         System.out.println("Has scholarship: " + hasScholarship);
     }
 
+    public void eat() {
+        System.out.println("Student is eating when he wants");
+        super.eat();
+    }
+
 
 }

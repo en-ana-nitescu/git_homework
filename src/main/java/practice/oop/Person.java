@@ -4,6 +4,12 @@ public class Person {
 
     //encapsulation - getter/setter
 
+    /*polymorphism - multiple implementations for the same method
+    dynamic (override) - inheritance (overriding method implementation in child class)
+    static (overload) - same method name, different implementations based on the number of parameters or type
+     */
+
+
     private String name;
     private String surname;
     private int age;
@@ -38,5 +44,9 @@ public class Person {
         System.out.println("Name: " + name);
         System.out.println("Surname: " + surname);
         System.out.println("Age: " + age);
+    }
+
+    public void eat() {
+        System.out.println("Person is eating");
     }
 }

@@ -42,4 +42,21 @@ public class Employee extends Person {
         System.out.println("Experience: " + experience);
         System.out.println("Vacation days: " + vacationDays);
     }
+
+    //dynamic polymorphism - overriding the method in parent class
+    public void eat() {
+        System.out.println("Employee is eating during launch break");
+    }
+
+    public void raise() {
+        System.out.println("No budget");
+    }
+
+    public void raise(int percentage) {
+        System.out.println("Employee receives a raise of " + percentage + "%");
+    }
+
+    public void raise(String grade){
+        System.out.println("Employee receives the new grade: " + grade);
+    }
 }
