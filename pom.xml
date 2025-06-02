@@ -51,7 +51,7 @@
                         <configuration>
                             <suiteXmlFiles>
                                 <!--suppress UnresolvedMavenProperty -->
-                                <suiteXmlFile>suites/${suiteXmlFile}.xml</suiteXmlFile>
+                                <suiteXmlFile>${suiteXmlFile}.xml</suiteXmlFile>
                             </suiteXmlFiles>
                         </configuration>
                     </plugin>
