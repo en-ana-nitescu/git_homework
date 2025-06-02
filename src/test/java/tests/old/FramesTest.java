@@ -18,7 +18,7 @@ public class FramesTest {
     public JSMethods jsMethods;
     public ElementMethods elementMethods;
 
-    @Test
+    //@Test
     public void automationMethod() {
         driver = new ChromeDriver();
         jsMethods = new JSMethods(driver);

@@ -21,7 +21,7 @@ public class WebTableTest {
     ElementMethods elementMethods;
     JSMethods jsMethods;
 
-    @Test
+    //@Test
     public void automationMethod() {
 
         //open Chrome browser

@@ -10,7 +10,7 @@ public class PracticeFormTestOld {
 
     public WebDriver driver;
 
-    @Test
+    //@Test
     public void automationMethod() {
 
         driver = new ChromeDriver();

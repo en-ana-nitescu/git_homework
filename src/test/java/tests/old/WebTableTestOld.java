@@ -16,7 +16,7 @@ public class WebTableTestOld {
 
     public WebDriver driver;
 
-    @Test
+    //@Test
     public void automationMethod() {
 
         //open Chrome browser

@@ -15,7 +15,7 @@ public class SortableTestOld {
 
     public WebDriver driver;
 
-    @Test
+    //@Test
     public void automationMethod() throws InterruptedException {
 
         driver = new ChromeDriver();

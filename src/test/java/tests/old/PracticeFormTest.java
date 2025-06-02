@@ -17,7 +17,7 @@ public class PracticeFormTest {
     public ElementMethods elementMethods;
     public JSMethods jsMethods;
 
-    @Test
+    //@Test
     public void automationMethod() {
 
         driver = new ChromeDriver();

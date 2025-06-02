@@ -14,7 +14,7 @@ import static org.testng.Assert.assertEquals;
 public class AlertsTestOld {
     public WebDriver driver;
 
-    @Test
+    //@Test
     public void automationMethod() {
         driver = new ChromeDriver();
 

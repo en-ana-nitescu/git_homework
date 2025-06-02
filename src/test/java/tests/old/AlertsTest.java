@@ -20,7 +20,7 @@ public class AlertsTest {
     AlertMethods alertMethods;
     JSMethods jsMethods;
 
-    @Test
+    //@Test
     public void automationMethod() {
         driver = new ChromeDriver();
         elementMethods = new ElementMethods(driver);

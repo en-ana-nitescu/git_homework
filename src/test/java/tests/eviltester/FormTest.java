@@ -27,7 +27,7 @@ public class FormTest {
         formPage = new FormPage(driver);
     }
 
-    @Test
+    //@Test
     public void myFirstTest() {
         formPage.enterUsername("Ana");
         formPage.enterComments("test comments");

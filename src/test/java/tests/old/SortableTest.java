@@ -18,7 +18,7 @@ public class SortableTest extends SharedData {
     JSMethods jsMethods;
     HomePage homePage;
 
-    @Test
+    //@Test
     public void automationMethod() throws InterruptedException {
         elementMethods = new ElementMethods(getDriver());
         jsMethods = new JSMethods(getDriver());

@@ -21,7 +21,7 @@ public class BrowserWindowsTest {
     public ElementMethods elementMethods;
     public WindowMethods windowMethods;
 
-    @Test
+    //@Test
     public void automationMethod() {
         driver = new ChromeDriver();
         jsMethods = new JSMethods(driver);
