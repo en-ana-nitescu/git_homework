@@ -7,18 +7,21 @@ import javax.xml.bind.annotation.XmlElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DriverConfigNode {
 
-    @XmlElement(name="LocalBrowser")
+    @XmlElement(name = "LocalBrowser")
     public String localBrowser;
 
-    @XmlElement(name="Url")
+    @XmlElement(name = "Url")
     public String url;
 
-    @XmlElement(name="Headless")
+    @XmlElement(name = "Headless")
     public String headless;
 
-    @XmlElement(name="Resolution")
+    @XmlElement(name = "Resolution")
     public String resolution;
 
-    @XmlElement(name="Gpu")
+    @XmlElement(name = "Gpu")
     public String gpu;
+
+    @XmlElement(name = "Extensions")
+    public String extensions;
 }
