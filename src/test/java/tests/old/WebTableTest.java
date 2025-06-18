@@ -1,13 +1,11 @@
 package tests.old;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
+import helperMethods.ElementMethods;
+import helperMethods.JSMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.Test;
 
 import java.util.List;
 

@@ -1,9 +1,9 @@
 package pages.demoqa;
 
-import helper_methods.AlertMethods;
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
-import helper_methods.WindowMethods;
+import helperMethods.AlertMethods;
+import helperMethods.ElementMethods;
+import helperMethods.JSMethods;
+import helperMethods.WindowMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

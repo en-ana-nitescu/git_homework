@@ -1,11 +1,10 @@
 package tests.old;
 
-import helper_methods.ElementMethods;
-import helper_methods.JSMethods;
+import helperMethods.ElementMethods;
+import helperMethods.JSMethods;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.testng.annotations.Test;
 import pages.demoqa.HomePage;
 import shared.SharedData;
 

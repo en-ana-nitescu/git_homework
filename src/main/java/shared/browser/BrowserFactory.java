@@ -36,6 +36,7 @@ public class BrowserFactory {
             case BrowserType.BROWSER_FIREFOX:
                 FirefoxBrowserService firefoxService = new FirefoxBrowserService();
                 firefoxService.openBrowser(configurationNode.driverConfigNode);
+                return firefoxService.getDriver();
         }
         return null;
     }
