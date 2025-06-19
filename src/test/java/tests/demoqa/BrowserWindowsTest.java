@@ -3,12 +3,12 @@ package tests.demoqa;
 import org.testng.annotations.Test;
 import pages.demoqa.BrowserWindowsPage;
 import pages.demoqa.HomePage;
-import shared.SharedData;
+import shared.Hooks;
 
 import static org.testng.Assert.assertEquals;
 
 
-public class BrowserWindowsTest extends SharedData {
+public class BrowserWindowsTest extends Hooks {
 
     HomePage homePage;
     BrowserWindowsPage browserWindowsPage;

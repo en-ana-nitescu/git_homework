@@ -3,11 +3,11 @@ package tests.demoqa;
 import org.testng.annotations.Test;
 import pages.demoqa.FramesPage;
 import pages.demoqa.HomePage;
-import shared.SharedData;
+import shared.Hooks;
 
 import static org.testng.Assert.assertEquals;
 
-public class FramesTest extends SharedData {
+public class FramesTest extends Hooks {
 
     HomePage homePage;
     FramesPage framesPage;

@@ -4,11 +4,11 @@ import objectData.PracticeFormObject;
 import org.testng.annotations.Test;
 import pages.demoqa.HomePage;
 import pages.demoqa.PracticeFormPage;
-import shared.SharedData;
+import shared.Hooks;
 import utils.PropertyUtils;
 
 
-public class PracticeFormTest extends SharedData {
+public class PracticeFormTest extends Hooks {
 
     HomePage homePage;
     PracticeFormPage practiceFormPage;

@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -38,6 +39,8 @@ public class HomePage extends CommonPage {
     public void goToMenu(List<WebElement> items, String menuName) {
         //elementMethods.clickElement(consentElement);
         jsMethods.scrollDown(400);
+        LoggerUtils.infoLog("Scroll down");
         elementMethods.selectElementByText(items, menuName);
+        LoggerUtils.infoLog("Select menu: " + menuName);
     }
 }

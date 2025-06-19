@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import objectData.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -43,13 +44,13 @@ public class WebTablePage extends CommonPage {
         elementMethods.clickElement(addField);
     }
 
-    public void completeDetails(String firstNameValue, String lastNameValue, String emailValue, String ageValue, String salaryValue, String departmentValue) {
-        elementMethods.fillElement(firstNameField, firstNameValue);
-        elementMethods.fillElement(lastNameField, lastNameValue);
-        elementMethods.fillElement(emailField, emailValue);
-        elementMethods.fillElement(ageField, ageValue);
-        elementMethods.fillElement(salaryField, salaryValue);
-        elementMethods.fillElement(departmentField, departmentValue);
+    public void completeDetails(WebTableObject webTableObject) {
+        elementMethods.fillElement(firstNameField, webTableObject.getFirstName());
+        elementMethods.fillElement(lastNameField, webTableObject.getLastName());
+        elementMethods.fillElement(emailField, webTableObject.getEmail());
+        elementMethods.fillElement(ageField, webTableObject.getAge());
+        elementMethods.fillElement(salaryField, webTableObject.getSalary());
+        elementMethods.fillElement(departmentField, webTableObject.getDepartment());
     }
 
     public void clickSubmit() {

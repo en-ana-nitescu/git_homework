@@ -3,12 +3,12 @@ package tests.demoqa;
 import org.testng.annotations.Test;
 import pages.demoqa.AlertsPage;
 import pages.demoqa.HomePage;
-import shared.SharedData;
+import shared.Hooks;
 
 import static org.testng.Assert.assertEquals;
 
 
-public class AlertsTest extends SharedData {
+public class AlertsTest extends Hooks {
     HomePage homePage;
     AlertsPage alertsPage;
 
