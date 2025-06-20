@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,6 +25,7 @@ public class BrowserWindowsPage extends CommonPage {
     }
 
     public void switchToWindow(int index) {
+        LoggerUtils.infoLog("The user switches to new window");
         windowMethods.switchToWindow(index);
     }
 
@@ -32,10 +34,10 @@ public class BrowserWindowsPage extends CommonPage {
     }
 
     public void clickWindowButton() {
+        LoggerUtils.infoLog("The user clicks window button");
         elementMethods.clickElement(windowButton);
     }
 
-    //todo
     public void displayedTextFromNewTab() {
         elementMethods.clickElement(tabButton);
         windowMethods.switchToOpenedTab();

@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,11 +30,13 @@ public class AlertsPage extends CommonPage {
     }
 
     public void clickAlertButton(String alertText) {
+        LoggerUtils.infoLog("The user interacts with alert");
         elementMethods.clickElement(alertButton);
         alertMethods.interactWithAlertOK(alertText);
     }
 
     public void clickTimerAlertButton(String alertText) {
+        LoggerUtils.infoLog("The user interacts with timer alert");
         elementMethods.clickElement(timerAlertButton);
         alertMethods.interactWithAlertOK(alertText);
     }
@@ -48,6 +51,7 @@ public class AlertsPage extends CommonPage {
     }
 
     public void clickPromptButton(String alertText) {
+        LoggerUtils.infoLog("The user interacts with prompt alert");
         elementMethods.clickElement(promptButton);
         alertMethods.interactWithAlertOK(alertText);
     }

@@ -1,5 +1,7 @@
 package tests.demoqa;
 
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import org.testng.annotations.Test;
 import pages.demoqa.FramesPage;
 import pages.demoqa.HomePage;
@@ -18,16 +20,16 @@ public class FramesTest extends Hooks {
         framesPage = new FramesPage(getDriver());
 
         homePage.goToMenu(homePage.getMenuItems(), "Alerts, Frame & Windows");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Alerts, Frame & Windows");
         homePage.goToMenu(homePage.getSubMenuItems(), "Frames");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Frames sub -menu");
 
-        getDriver().switchTo().frame(framesPage.getFirstFrameElement());
+        framesPage.switchToFirstFrame();
+        assertEquals(framesPage.getSampleHeadingText(), "This is a sample page");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects first iFrame");
 
-        assertEquals("This is a sample page", framesPage.getSampleHeading().getText());
+        framesPage.switchToMainContent();
 
-        getDriver().switchTo().defaultContent();
-
-        getDriver().switchTo().frame(framesPage.getSecondFrameElement());
-
-        framesPage.scrollBy(100, 100);
+        framesPage.switchToSecondFrame();
     }
 }

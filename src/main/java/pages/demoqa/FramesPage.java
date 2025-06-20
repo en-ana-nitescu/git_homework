@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,19 +20,23 @@ public class FramesPage extends CommonPage {
         super(driver);
     }
 
-    public WebElement getFirstFrameElement() {
-        return firstFrameElement;
+    public String getSampleHeadingText() {
+        return sampleHeading.getText();
     }
 
-    public WebElement getSampleHeading() {
-        return sampleHeading;
+    public void switchToFirstFrame() {
+        elementMethods.switchToFrame(firstFrameElement);
+        LoggerUtils.infoLog("The user switched to the first frame");
     }
 
-    public WebElement getSecondFrameElement() {
-        return secondFrameElement;
+    public void switchToSecondFrame() {
+        elementMethods.switchToFrame(secondFrameElement);
+        LoggerUtils.infoLog("The user switched to the second frame");
+        jsMethods.scroll(100,100);
     }
 
-    public void scrollBy(int x, int y) {
-        jsMethods.scroll(x, y);
+    public void switchToMainContent() {
+        elementMethods.switchToMain();
+        LoggerUtils.infoLog("The user switched to default content");
     }
 }

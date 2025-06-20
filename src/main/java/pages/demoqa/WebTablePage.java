@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import objectData.WebTableObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -42,19 +43,27 @@ public class WebTablePage extends CommonPage {
 
     public void addNewRecord() {
         elementMethods.clickElement(addField);
+        LoggerUtils.infoLog("The user adds new row");
     }
 
     public void completeDetails(WebTableObject webTableObject) {
         elementMethods.fillElement(firstNameField, webTableObject.getFirstName());
+        LoggerUtils.infoLog("The user completes first name");
         elementMethods.fillElement(lastNameField, webTableObject.getLastName());
+        LoggerUtils.infoLog("The user completes last name");
         elementMethods.fillElement(emailField, webTableObject.getEmail());
+        LoggerUtils.infoLog("The user completes email");
         elementMethods.fillElement(ageField, webTableObject.getAge());
+        LoggerUtils.infoLog("The user completes age");
         elementMethods.fillElement(salaryField, webTableObject.getSalary());
+        LoggerUtils.infoLog("The user completes salary");
         elementMethods.fillElement(departmentField, webTableObject.getDepartment());
+        LoggerUtils.infoLog("The user completes department");
     }
 
     public void clickSubmit() {
         elementMethods.clickElement(submitField);
+        LoggerUtils.infoLog("The user clicks submit");
     }
 
 

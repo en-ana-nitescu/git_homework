@@ -1,5 +1,7 @@
 package tests.demoqa;
 
+import extentUtility.ExtentUtility;
+import extentUtility.ReportStep;
 import objectData.WebTableObject;
 import org.testng.annotations.Test;
 import pages.demoqa.HomePage;
@@ -26,15 +28,20 @@ public class WebTableTest extends Hooks {
         webTableObject = new WebTableObject(propertyUtils.getData());
 
         homePage.goToMenu(homePage.getMenuItems(), "Elements");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Elements");
         homePage.goToMenu(homePage.getSubMenuItems(), "Web Tables");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Web Tables");
 
         int initialSize = webTablePage.getTableSize();
 
         webTablePage.addNewRecord();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user adds new row");
 
         webTablePage.completeDetails(webTableObject);
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user completes all the details");
 
         webTablePage.clickSubmit();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user clicks on submit");
 
         int newSize = webTablePage.getTableSize();
         assertEquals(initialSize + 1, newSize);

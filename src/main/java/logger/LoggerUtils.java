@@ -15,7 +15,7 @@ public class LoggerUtils {
     private static final String suiteLogsPath = "target/logs/suite/";
 
     //path of the file that contains all logs
-    private static final String regressionsLogsPath = "target/logs/";
+    private static final String regressionLogsPath = "target/logs/";
 
     private static final Logger logger = LogManager.getLogger();
 
@@ -58,12 +58,10 @@ public class LoggerUtils {
 
         try {
             // create an object of PrintWriter for an output file
-            PrintWriter pw = new PrintWriter(regressionsLogsPath+"RegressionsLogs.log");
+            PrintWriter pw = new PrintWriter(regressionLogsPath +"RegressionLogs.log");
 
             // loop for reading the contents of all the files in the directory
             for (String fileName : fileNames) {
-                System.out.println("Reading from " + fileName);
-
                 // create instance of a file from the name of the file stored in string Array
                 File f = new File(dir, fileName);
 

@@ -1,5 +1,6 @@
 package pages.demoqa;
 
+import logger.LoggerUtils;
 import objectData.PracticeFormObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -73,10 +74,15 @@ public class PracticeFormPage extends CommonPage {
 
     public void completeFirstRegion(PracticeFormObject practiceFormObject) {
         elementMethods.fillElementAndEnter(firstNameField, practiceFormObject.getFirstName());
+        LoggerUtils.infoLog("The user completes first name");
         elementMethods.fillElementAndEnter(lastNameField, practiceFormObject.getLastName());
+        LoggerUtils.infoLog("The user completes last name");
         elementMethods.fillElementAndEnter(emailField, practiceFormObject.getEmail());
+        LoggerUtils.infoLog("The user completes email");
         elementMethods.fillElementAndEnter(currentAddressField, practiceFormObject.getAddress());
+        LoggerUtils.infoLog("The user completes address");
         elementMethods.fillElementAndEnter(mobileField, practiceFormObject.getMobile());
+        LoggerUtils.infoLog("The user completes mobile");
     }
 
     public void selectGender(PracticeFormObject practiceFormObject) {

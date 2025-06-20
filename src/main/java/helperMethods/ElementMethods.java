@@ -100,7 +100,7 @@ public class ElementMethods {
     public void clickMultipleValues(List<WebElement> elements, List<String> values) {
         for (String value : values) {
             for (WebElement element : elements) {
-                if(element.getText().equals(value)) {
+                if (element.getText().equals(value)) {
                     clickElement(element);
                 }
             }
@@ -110,5 +110,13 @@ public class ElementMethods {
 
     public String getElementText(WebElement element) {
         return element.getText();
+    }
+
+    public void switchToMain() {
+        driver.switchTo().defaultContent();
+    }
+
+    public void switchToFrame(WebElement element) {
+        driver.switchTo().frame(element);
     }
 }
