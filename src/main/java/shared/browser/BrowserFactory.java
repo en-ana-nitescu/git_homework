@@ -19,7 +19,7 @@ public class BrowserFactory {
         ConfigurationNode configurationNode = ConfigFile.createConfigNode(ConfigurationNode.class);
 
         if (Boolean.parseBoolean(ciCd)) {
-            configurationNode.driverConfigNode.headless = "--headless";
+            configurationNode.driverConfigNode.headless = "--headless=new";
         } else {
             browser = configurationNode.driverConfigNode.localBrowser;
         }

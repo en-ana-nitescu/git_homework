@@ -22,14 +22,15 @@ public class FramesTest extends Hooks {
         homePage.goToMenu(homePage.getMenuItems(), "Alerts, Frame & Windows");
         ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Alerts, Frame & Windows");
         homePage.goToMenu(homePage.getSubMenuItems(), "Frames");
-        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Frames sub -menu");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects Frames sub-menu");
 
         framesPage.switchToFirstFrame();
         assertEquals(framesPage.getSampleHeadingText(), "This is a sample page");
-        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user selects first iFrame");
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user switches to first iFrame");
 
         framesPage.switchToMainContent();
 
         framesPage.switchToSecondFrame();
+        ExtentUtility.attachLog(ReportStep.PASS_STEP, "The user switches to second iFrame");
     }
 }

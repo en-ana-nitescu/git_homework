@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
     <DriverConfig>
-        <LocalBrowser>firefox</LocalBrowser>
+        <LocalBrowser>chrome</LocalBrowser>
         <Url>https://demoqa.com/</Url>
-        <Headless>--headless</Headless>
+        <Headless>--headless=new</Headless>
         <Resolution>window-size=1920,1080</Resolution>
         <Gpu>--disable-gpu</Gpu>
         <Extensions>--disable-extensions</Extensions>
